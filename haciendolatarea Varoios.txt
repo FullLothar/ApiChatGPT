@@ -1,0 +1,11 @@
+haciendolatarea.com.ar
+
+Credenciales del usuario del sistema
+para acceder a los archivos alojados mediante FTP y SSH
+
+Nombre de usuario: haciendolatarea.com._gahswuk5agc
+Contraseña: L$KIt0zh69
+
+GitHub: 
+Name: FullLthar
+Email: pablosalina1980@gmail.com

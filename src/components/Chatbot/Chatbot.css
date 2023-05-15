@@ -1,0 +1,73 @@
+.chatbot__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+..chatbot__card {
+position: relative;
+width: 300px;
+height: auto; / Modificamos la altura para que se ajuste al contenido /
+margin: 20px;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+cursor: pointer;
+background-color: #f2f2f2; / Añadimos un fondo de color suave /
+border: 1px solid #ccc; / Añadimos un borde alrededor del chatbot /
+}
+
+.chatbot__card:hover {
+  transform: scale(1.05);
+}
+
+.chatbot__card img {
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.chatbot__card h3 {
+  font-size: 1.5rem;
+  margin: 10px;
+  color: #333;
+}
+
+.chatbot__card p {
+  font-size: 1.2rem;
+  margin: 10px;
+  color: #777;
+  height: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chatbot-input-container input[type="text"] {
+  width: 80%; /* Reducimos el ancho del input para dar más espacio al botón */
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  font-size: 1rem;
+  margin-right: 5px;
+}
+
+.chatbot-input-container button {
+  background-color: #4CAF50; / Cambiamos el color del botón /
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  width: 15%; / Ampliamos el ancho del botón para hacerlo más visible /
+  font-size: 1rem;
+}
+
+
+@media screen and (max-width: 768px) {
+  .chatbot__card {
+    width: 250px;
+    height: 350px;
+  }
+}
