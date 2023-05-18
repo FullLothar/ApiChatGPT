@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 
 // Definir directorio público
-const publicDirectoryPath = path.join(__dirname, 'public_html');
+const publicDirectoryPath = path.join(__dirname, 'httpdocs');
 app.use(express.static(publicDirectoryPath));
 
 // Ruta para enviar el archivo index.html
@@ -18,7 +18,7 @@ app.get('/style.css', (req, res) => {
 
 // Iniciar servidor
 const hostname = '198.136.51.106';
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 app.listen(port, () => {
     console.log(`Servidor iniciado en el puerto ${port}`);
 });
