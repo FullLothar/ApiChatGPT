@@ -1,26 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Chatbot.css';
 import axios from 'axios';
 
-// Función para enviar el mensaje a la API de ChatGPT
-const sendMessageToChatGPT = async (message) => {
-  try {
-    const response = await axios.post('https://chat.openai.com/', {
-      message: message
-    });
-
-    // Procesar la respuesta de la API y mostrarla en el chatbot
-    const answer = response.data.answer;
-    console.log(answer);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
 function Chatbot() {
+  const [message, setMessage] = useState('');
+
+  const sendMessageToChatGPT = async (message) => {
+    try {
+      const response = await axios.post('https://chat.openai.com/', {
+        message: message
+      });
+
+      const answer = response.data.answer;
+      console.log(answer);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    setMessage(e.target.value);
+  };
+
   const handleSendMessage = () => {
-    // Lógica para enviar el mensaje a la API de ChatGPT
-    const message = ""; // Obtén el mensaje del input
     sendMessageToChatGPT(message);
   };
 
@@ -30,7 +32,12 @@ function Chatbot() {
       <div className="chatbot__card">
         <p>Content goes here</p>
         <div className="chatbot-input-container">
-          <input type="text" placeholder="Type your message" />
+          <input
+            type="text"
+            placeholder="Type your message"
+            value={message}
+            onChange={handleInputChange}
+          />
           <button onClick={handleSendMessage}>Send</button>
         </div>
       </div>
