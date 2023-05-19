@@ -7,12 +7,23 @@ function Chatbot() {
 
   const sendMessageToChatGPT = async (message) => {
     try {
-      const response = await axios.post('https://chat.openai.com/', {
-        message: message
-      });
+      const api_key = process.env.OPENAI_API_KEY; // Recupera la clave de API de una variable de entorno
 
-      const answer = response.data.answer;
-      console.log(answer);
+const headers = {
+  'Authorization': `Bearer ${api_key}`,
+  'Content-Type': 'application/json'
+} catch (error) {
+  console.error(error);
+};
+
+      const response = await axios.post('https://api.openai.com/v1/chat/completions', {
+        model: 'gpt-3.5-turbo',
+        messages: [{ role: 'user', content: message }],
+        temperature: 0.7
+      }, { headers });
+
+      const completion = response.data.choices[0].message.content;
+      console.log(completion);
     } catch (error) {
       console.error(error);
     }
@@ -20,10 +31,12 @@ function Chatbot() {
 
   const handleInputChange = (e) => {
     setMessage(e.target.value);
+    setMessage(''); // Limpiar el campo de entrada después de enviar el mensaje
   };
 
   const handleSendMessage = () => {
     sendMessageToChatGPT(message);
+
   };
 
   return (
